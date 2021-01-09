@@ -10,7 +10,8 @@ const { assert } = require("chai");
 chai.use(chaiHttp);
 //Our parent block
 describe('todo Lists', () => {
-  beforeEach((done) => { //Before each test we empty the database
+  beforeEach((done) => { 
+    this.timeout(10000);//Before each test we empty the database
     todos.deleteMany({}, (err) => {
       done();
     });
@@ -25,7 +26,7 @@ describe('todo Lists', () => {
           .send(todos)
           .end((err, res) => {
             res.status.should.be.equal(200);
-
+            this.timeout(10000);
             done();
           });
       });
@@ -43,7 +44,7 @@ describe('todo Lists', () => {
           res.status.should.be.equal(200);
 
           res.should.be.json;
-
+          this.timeout(10000);
           done();
         });
     });
