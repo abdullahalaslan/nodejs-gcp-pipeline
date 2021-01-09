@@ -14,17 +14,16 @@ steps:
     args: ["run", "test"]
 
   # build an artifact using the docker builder
-  #- name: "gcr.io/cloud-builders/docker"
-   # args:
-   # # [
-    #    "build",
-    #    "--build-arg",
-   #     "NODE_ENV=production",
-    #    "-t",
-    #    "${_GCR_REGION}.gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA",
-    #    ".",
-    #  ]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+    [
+        "build",
+        "--build-arg",
+        "-t",
+        "gcr.io/$_PROJECT_ID/$_REPO_NAME",
+        ".",
+    ]
 
   # push the artifact to a GCR repository
- # - name: "gcr.io/cloud-builders/docker"
-  #  args: ["push", "${_GCR_REGION}.gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME"]
