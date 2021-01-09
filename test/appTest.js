@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 //Our parent block
 describe('todo Lists', () => {
   beforeEach((done) => { 
-    timeout(10000);//Before each test we empty the database
+    //Before each test we empty the database
     todos.deleteMany({}, (err) => {
       done();
     });
@@ -26,13 +26,13 @@ describe('todo Lists', () => {
           .send(todos)
           .end((err, res) => {
             res.status.should.be.equal(200);
-            timeout(10000);
+            
             done();
           });
       });
     });
 
-  });
+  })
 
 
   describe('/GET todo Lists', () => {
@@ -44,15 +44,15 @@ describe('todo Lists', () => {
           res.status.should.be.equal(200);
 
           res.should.be.json;
-          timeout(10000);
+         
           done();
         });
     });
-  });
+  })
 
 
 
-});
+}).timeout(10000);
 
 /*
 describe('/remove/:id book', () => {
