@@ -15,7 +15,7 @@ steps:
 
   # build an artifact using the docker builder
   - name: "gcr.io/cloud-builders/docker"
-    args: ["docker", "build", "-t", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest", "."]
+    args: ["docker", "build", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest", "."]
 
   # push the artifact to a GCR repository
   - name: "gcr.io/cloud-builders/docker"
