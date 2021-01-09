@@ -5,7 +5,7 @@ steps:
   # install the app dependencies
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
-
+    
   # execute the tests
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "test"]
