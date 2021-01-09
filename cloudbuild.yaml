@@ -5,6 +5,8 @@ steps:
   # install the app dependencies
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "create-env"]
     env:
     - 'DB_CONNECT=${_SECRET_KEY}'
   # execute the tests

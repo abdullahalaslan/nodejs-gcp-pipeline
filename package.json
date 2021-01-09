@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "create-env": "printenv > .env"
   },
   "licence": "ISC",
   "dependencies": {
