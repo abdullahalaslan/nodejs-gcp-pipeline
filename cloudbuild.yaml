@@ -17,11 +17,11 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
     [
-        "build",
-        "--build-arg",
-        "-t",
-        "gcr.io/$_PROJECT_ID/$_REPO_NAME",
-        ".",
+        "build"
+        "--build-arg"
+        "-t"
+        "gcr.io/$_PROJECT_ID/$_REPO_NAME"
+        "."
     ]
 
   # push the artifact to a GCR repository
