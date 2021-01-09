@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha --exit" 
+    "test": "mocha --exit"
   },
   "licence": "ISC",
   "dependencies": {
