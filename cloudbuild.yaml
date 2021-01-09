@@ -19,4 +19,4 @@ steps:
 
   # push the artifact to a GCR repository
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:latest"]
+    args: ["push", "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:latest"]
