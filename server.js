@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //connection to db
 mongoose.set("useFindAndModify", false);
-mongoose.connect(process.env._DBCONNECT, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log("Connected to db!");
     app.listen(8080, () => console.log("Server Up and running"));
 });
