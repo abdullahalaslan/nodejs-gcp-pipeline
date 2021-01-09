@@ -15,12 +15,12 @@ steps:
 
   # build an artifact using the docker builder
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "$_PROJECT_ID/$_REPO_NAME:latest", "."]
+    args: ["build", "-t", "gcr.io/$_PROJECT_ID/$_REPO_NAME", "."]
   
   # push the artifact to a GCR repository
   - name: "gcr.io/cloud-builders/docker"
-    args: ["tag", "gcr.io/$PROJECT_ID/$REPO_NAME:latest", "gcr.io/$PROJECT_ID/$REPO_NAME:latest"]
+    args: ["tag", "gcr.io/$PROJECT_ID/$REPO_NAME", "gcr.io/$PROJECT_ID/$REPO_NAME"]
 
   # push the artifact to a GCR repository
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:latest"]
+    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME"]
