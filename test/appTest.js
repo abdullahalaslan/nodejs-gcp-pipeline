@@ -32,7 +32,7 @@ describe('todo Lists', () => {
       });
     });
 
-  }).timeout(10000);
+  });
 
 
   describe('/GET todo Lists', () => {
@@ -48,11 +48,9 @@ describe('todo Lists', () => {
           done();
         });
     });
-  }).timeout(10000);
+  })
 
-
-
-}).timeout(10000);
+});
 
 /*
 describe('/remove/:id book', () => {
