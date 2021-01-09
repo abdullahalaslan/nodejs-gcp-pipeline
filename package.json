@@ -1,0 +1,25 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Abdullah Alaslan",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "mocha --exit"
+    
+  },
+  "licence": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "8.2.0",
+    "ejs": "3.1.5",
+    "express": "4.17.1",
+    "mocha": "^8.2.1",
+    "mocha-casperjs": "^0.6.0",
+    "mongoose": "5.10.15",
+    "nodemon": "2.0.6",
+    "should": "^13.2.3"
+  }
+}

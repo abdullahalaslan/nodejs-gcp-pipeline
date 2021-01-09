@@ -1,0 +1,27 @@
+# Example Cloud Build Configuration File
+#
+# define the build steps
+steps:
+  # install the app dependencies
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+
+  # execute the tests
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "test"]
+
+  # build an artifact using the docker builder
+  #- name: "gcr.io/cloud-builders/docker"
+   # args:
+   # # [
+    #    "build",
+    #    "--build-arg",
+   #     "NODE_ENV=production",
+    #    "-t",
+    #    "${_GCR_REGION}.gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA",
+    #    ".",
+    #  ]
+
+  # push the artifact to a GCR repository
+ # - name: "gcr.io/cloud-builders/docker"
+  #  args: ["push", "${_GCR_REGION}.gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
