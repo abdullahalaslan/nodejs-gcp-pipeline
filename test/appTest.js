@@ -10,6 +10,7 @@ const { assert } = require("chai");
 chai.use(chaiHttp);
 //Our parent block
 describe('todo Lists', () => {
+  this.timeout(7500);
   beforeEach((done) => { 
     //Before each test we empty the database
     todos.deleteMany({}, (err) => {
@@ -19,6 +20,7 @@ describe('todo Lists', () => {
 
   describe('/POST todos', () => {
     it('it should not POST a todos without pages field', (done) => {
+      setTimeout(done, 5000);
       let todos = new TodoTask({ content: "Matrix", check: true, Date: 1854 })
       todos.save((err, todos) => {
         chai.request(server)
@@ -37,6 +39,7 @@ describe('todo Lists', () => {
 
   describe('/GET todo Lists', () => {
     it('it should GET all the lists', (done) => {
+      setTimeout(done, 5000);
       chai.request(server)
         .get('/')
         .end((err, res) => {
