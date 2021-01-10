@@ -16,6 +16,26 @@ steps:
   # build an artifact using the docker builder
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest", "."]
+     
+     #step 4
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: [
+    'set', 
+    'image', 
+    'deployment', 
+    'todoapp', 
+    'todoapp=gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
+    ]
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
+
+  #step 3
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'kubernetes.yaml']
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
   
 images:
   - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
