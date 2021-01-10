@@ -17,13 +17,23 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest", "."]
   
-   # deploy container image to GKE
-  - name: "gcr.io/cloud-builders/gke-deploy"
-    args:
-    - 'run'
-    - '--filename=kubernetes.yaml'
-    - '--image=gcr.io/$_PROJECT_ID/$_REPO_NAME:latest'
-    - '--location=us-central1-c'
-    - '--cluster=mycluster'
+  #step 3
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'k8s/']
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
+  #step 4
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: [
+    'set', 
+    'image', 
+    'deployment', 
+    '$_REPO_NAME', 
+    '$_REPO_NAME=gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
+    ]
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
 images:
   - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
