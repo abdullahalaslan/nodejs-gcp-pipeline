@@ -17,8 +17,8 @@ spec:
         app: "todoapp"
     spec:
       containers:
-      - name: "nodejs-gcr-repo-sha256-1"
-        image: "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest"
+      - name: "todoapp"
+        image: "gcr.io/$_PROJECT_ID/nodejs-gcr-repo:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
