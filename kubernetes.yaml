@@ -16,6 +16,7 @@ spec:
       labels:
         app: "todoapp"
     spec:
+      imagePullPolicy: Always
       containers:
       - name: "todoapp"
         image: "gcr.io/case-301214/nodejs-gcr-repo:latest"
