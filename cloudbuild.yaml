@@ -19,3 +19,12 @@ steps:
   
 images:
   - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
+
+   # deploy container image to GKE
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+    - run
+    - --filename=kubernetes
+    - --image=gcr.io/$_PROJECT_ID/$_REPO_NAME:latest
+    - --location=us-central1-c
+    - --cluster=mycluster

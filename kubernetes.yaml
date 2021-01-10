@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "todoapp"
+  namespace: "default"
+  labels:
+    app: "todoapp"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "todoapp"
+  template:
+    metadata:
+      labels:
+        app: "todoapp"
+    spec:
+      containers:
+      - name: "nodejs-gcr-repo-sha256-1"
+        image: "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "todoapp-hpa-zs4m"
+  namespace: "default"
+  labels:
+    app: "todoapp"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "todoapp"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
