@@ -29,8 +29,8 @@ steps:
     'set', 
     'image', 
     'deployment', 
-    '$_REPO_NAME', 
-    '$_REPO_NAME=gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
+    'todoapp', 
+    'todoapp=gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
     ]
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
