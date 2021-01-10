@@ -24,7 +24,7 @@ images:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=kubernetes
+    - --filename=kubernetes.yaml
     - --image=gcr.io/$_PROJECT_ID/$_REPO_NAME:latest
     - --location=us-central1-c
     - --cluster=mycluster
