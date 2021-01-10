@@ -17,12 +17,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest", "."]
   
-  #step 3
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'kubernetes.yaml']
-    env:
-    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
+
   #step 4
   - name: 'gcr.io/cloud-builders/kubectl'
     args: [
@@ -37,3 +32,11 @@ steps:
     - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
 images:
   - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
+  
+  
+    #step 3
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'kubernetes.yaml']
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
