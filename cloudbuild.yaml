@@ -23,6 +23,7 @@ steps:
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
     - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
+    - 'KUBECONFIG=/workspace/.kube/config'
     
     #step 4
   - name: 'gcr.io/cloud-builders/kubectl'
@@ -36,6 +37,7 @@ steps:
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
     - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
+    - 'KUBECONFIG=/workspace/.kube/config'
   
 images:
   - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
