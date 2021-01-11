@@ -1,8 +1,6 @@
 let mongoose = require('mongoose');
 let TodoTask = require('../models/TodoTask');
 
-
-
 function getToDo(req, res) {
     TodoTask.find({}, (err, tasks) => {
         res.render("todo.ejs", { todoTasks: tasks });
@@ -31,6 +29,5 @@ function deleteToDo(req, res) {
         res.redirect("/");
     });
 }
-
 
 module.exports = { getToDo, postToDo, deleteToDo };

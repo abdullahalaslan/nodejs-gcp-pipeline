@@ -2,13 +2,7 @@
 #
 # define the build steps
 steps:
-  # install the app dependencies
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["install"]
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: 'bash'
-    args: [ '-c', "gcloud secrets versions access latest --secret=db-secret --format='get(payload.data)' | tr '_-' '/+' | base64 -d > decrypted-data.txt" ]
-    
+
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "create-env"]
     env:
