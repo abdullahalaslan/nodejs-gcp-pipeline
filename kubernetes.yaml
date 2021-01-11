@@ -20,23 +20,3 @@ spec:
       - name: "todoapp"
         image: "gcr.io/case-301214/nodejs-gcr-repo:latest"
         imagePullPolicy: Always
----
-apiVersion: "autoscaling/v2beta1"
-kind: "HorizontalPodAutoscaler"
-metadata:
-  name: "todoapp-hpa-zs4m"
-  namespace: "default"
-  labels:
-    app: "todoapp"
-spec:
-  scaleTargetRef:
-    kind: "Deployment"
-    name: "todoapp"
-    apiVersion: "apps/v1"
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: "Resource"
-    resource:
-      name: "cpu"
-      targetAverageUtilization: 80
