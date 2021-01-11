@@ -2,7 +2,10 @@
 #
 # define the build steps
 steps:
-
+  # install the app dependencies
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+    
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "create-env"]
     env:
