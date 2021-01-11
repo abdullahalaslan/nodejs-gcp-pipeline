@@ -3,28 +3,27 @@
 # define the build steps
 steps:
   # install the app dependencies
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["install"]
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
 
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "create-env"]
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'create-env']
     env:
     - 'DB_CONNECT=${_SECRET_KEY}'
   # execute the tests
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "test"]
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'test']
 
   # build an artifact using the docker builder
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest", "."]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$_PROJECT_ID/$_REPO_NAME:latest', '.']
 
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$_PROJECT_ID/$_REPO_NAME:latest"]
-images:
-  - ["gcr.io/$_PROJECT_ID/$_REPO_NAME:latest"]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$_PROJECT_ID/$_REPO_NAME:latest']
+  #images: ['gcr.io/$_PROJECT_ID/$_REPO_NAME:latest']
 
 # deploy container image to GKE
-  - name: "gcr.io/cloud-builders/gke-deploy"
+  - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
     - run
     - --filename=kubernetes.yaml
@@ -32,5 +31,5 @@ images:
     - --location=us-central1-c
     - --cluster=mycluster
   
-#images:
- # - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
+images:
+  - 'gcr.io/$PROJECT_ID/$_REPO_NAME:latest'
