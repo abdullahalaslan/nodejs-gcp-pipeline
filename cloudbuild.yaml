@@ -1,5 +1,3 @@
-# Example Cloud Build Configuration File
-#
 # define the build steps
 steps:
   # install the app dependencies
@@ -20,7 +18,7 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$_PROJECT_ID/$_REPO_NAME:latest']
-    
+
 # deploy container image to GKE
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
